@@ -1,0 +1,125 @@
+### ==========================================
+### VARIABLES — mets ton token ici après login
+### ==========================================
+@url = http://localhost:5000/api
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywidXNlcm5hbWUiOiJqdXN0aW4iLCJpYXQiOjE3NzUzMTI2MDQsImV4cCI6MTc3NTMxOTgwNH0.vBsEaAcIBP6O1BuVs944BSejufZs6p4payrQ-Hrj510
+
+
+### ==========================================
+### 1. CATEGORIES
+### ==========================================
+
+### Récupérer toutes les catégories
+GET {{url}}/categories
+
+###
+
+### Ajouter une catégorie (token obligatoire)
+POST {{url}}/categories
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "nom": "Intelligence Artificielle"
+}
+
+
+### ==========================================
+### 2. AUTHENTIFICATION
+### ==========================================
+
+### Créer un compte (à faire UNE seule fois)
+POST {{url}}/auth/register
+Content-Type: application/json
+
+{
+    "username": "justin",
+    "email": "justin@2ie.com",
+    "password": "my_pass_secu"
+}
+
+###
+
+### Se connecter — copie le token reçu dans @token en haut
+POST {{url}}/auth/login
+Content-Type: application/json
+
+{
+    "email": "justin@2ie.com",
+    "password": "my_pass_secu"
+}
+
+
+### ==========================================
+### 3. ARTICLES
+### ==========================================
+
+### Récupérer tous les articles
+GET {{url}}/articles
+
+###
+
+### Récupérer un seul article par ID
+GET {{url}}/articles/2
+
+###
+
+### Créer un article (token obligatoire)
+POST {{url}}/articles
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "titre": "Découverte de nouveauté",
+    "slug": "decouverte",
+    "contenu": "Nouveau contenu disponible.",
+    "image_url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97",
+    "categorie_id": 3
+}
+
+###
+
+### Modifier un article (token obligatoire)
+PUT {{url}}/articles/2
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "titre": "Node.js — version corrigée",
+    "slug": "node-js-version-corrigee",
+    "contenu": "Contenu mis à jour avec de nouvelles informations.",
+    "image_url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97",
+    "categorie_id": 2
+}
+
+###
+
+### Supprimer un article (token obligatoire)
+DELETE {{url}}/articles/2
+Authorization: Bearer {{token}}
+
+
+### ==========================================
+### 4. COMMENTAIRES
+### ==========================================
+
+### Récupérer les commentaires d'un article
+GET {{url}}/comments/article/2
+
+###
+
+### Ajouter un commentaire
+POST {{url}}/comments
+Content-Type: application/json
+
+{
+    "auteur": "Jean Dupont",
+    "contenu": "Super article, merci beaucoup !",
+    "article_id": 2
+}
+
+
+### ==========================================
+### 5. TEST ERREUR — route inexistante
+### ==========================================
+GET {{url}}/cette-route-nexiste-pas
