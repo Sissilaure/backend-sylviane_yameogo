@@ -1,5 +1,5 @@
 ### ==========================================
-### VARIABLES — mets ton token ici après login
+### VARIABLES 
 ### ==========================================
 @url = http://localhost:5000/api
 @token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywidXNlcm5hbWUiOiJqdXN0aW4iLCJpYXQiOjE3NzUzMTI2MDQsImV4cCI6MTc3NTMxOTgwNH0.vBsEaAcIBP6O1BuVs944BSejufZs6p4payrQ-Hrj510
